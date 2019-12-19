@@ -66,8 +66,7 @@ public class Parking {
 
         return nplaza;
     }
-    
-    
+
     public void entrada() {
         int nplaza = busquedaSecuencial();
         if (nplaza == -1) {
