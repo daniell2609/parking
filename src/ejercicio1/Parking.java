@@ -106,9 +106,32 @@ public class Parking {
         return  (byte) numero;
     }
     
+        public byte pedirPlazaLiberar() {
+                BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
+        boolean correcto;
+        byte numero = 0;
+        correcto = false;
+        while (!correcto) {
+            try {
+                
+                numero = Byte.parseByte(teclado.readLine());
+                if (numero > 0 && numero < plazas.length) {
+                    correcto = true;
+                } else {
+                    System.out.println("No cumple las condiciones. Debe estar comprendido entre " + 1 + " y " + plazas.length);
+                }//else
+            }//try
+            catch (NumberFormatException ex) {
+                System.out.println("No es un numero");
+            } catch (IOException ex) {
+            }
+        }//While
+        return  (byte) numero;
+    }
+    
     public void salida(){
         int nplaza;
-        nplaza=pedirNumero();
+        nplaza=pedirPlazaLiberar();
         if (plazas[nplaza].equalsIgnoreCase("ocupado")){
             System.out.println("Plaza liberada");
             plazas[nplaza]="libre";
